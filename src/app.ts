@@ -1,5 +1,5 @@
 import express, { Application, NextFunction, Request, Response } from "express";
-import ErrorMiddleware from "./app/middleware/error";
+import ErrorMiddleware from "./app/middlewares/error";
 import ErrorHandler from "./app/utils/errorHandler";
 
 // Create an instance of the Express application
