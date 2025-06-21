@@ -1,5 +1,6 @@
 import express, { Application, NextFunction, Request, Response } from "express";
-import ErrorMiddleware from "./middleware/error";
+import ErrorMiddleware from "./app/middleware/error";
+import ErrorHandler from "./app/utils/errorHandler";
 
 // Create an instance of the Express application
 const app: Application = express();
@@ -19,20 +20,13 @@ app.get("/test", (_, res: Response) => {
 });
 
 /**
- * Handle all unknown routes (404 Not Found)
- * This will catch any request that doesn't match the defined routes
+ * Catch-all middleware for handling unknown routes (404 Not Found).
+ * This middleware runs after all route handlers.
+ * If no route matched the request, it creates a 404 error and passes it to the error handler.
  */
-app.all("*", (req: Request, res: Response, next: NextFunction) => {
-  // Create a new error message for unmatched routes
-  const message: any = new Error(
-    `Route /${req.originalUrl.substring(1)}/ not found`
-  );
-  // Set custom status for the error
-  message.status = 404;
-  // Pass the error to the next middleware (which is our error handler)
-  next(message);
+app.use((req: Request, res: Response, next: NextFunction) => {
+  next(new ErrorHandler(`Route ${req.originalUrl} not found`, 404));
 });
-
 /**
  * Centralized error-handling middleware
  * This will catch all errors passed by `next()` and send a proper response
