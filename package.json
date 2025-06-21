@@ -1,13 +1,27 @@
 {
-  "name": "express_mongoose_master_assignment",
+  "name": "library_management_application",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only .src/server.ts",
+    "dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "express",
+    "mongoose",
+    "mongodb",
+    "typescript",
+    "nodejs",
+    "backend",
+    "rest-api",
+    "api-development",
+    "ts-node-dev",
+    "express-mongoose",
+    "node-backend",
+    "crud-api",
+    "fullstack"
+  ],
+  "author": "Anamul Hassan",
   "license": "ISC",
   "description": "",
   "dependencies": {
