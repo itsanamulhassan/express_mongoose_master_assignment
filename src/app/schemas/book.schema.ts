@@ -33,11 +33,12 @@ export const createBookSchema = z.object({
 
   copies: z
     .number({
-      required_error: "Number of copies is required and cannot be negative.",
-      invalid_type_error: "Number of copies must be a number.",
+      required_error:
+        "Number of book copies is required and cannot be negative.",
+      invalid_type_error: "Number of book copies must be a number.",
     })
-    .int({ message: "Number of copies must be an integer." })
-    .positive({ message: "Number of copies must be a positive number." }),
+    .int({ message: "Number of book copies must be an integer." })
+    .positive({ message: "Number of book copies must be a positive number." }),
 
   available: z.boolean().default(true),
 });

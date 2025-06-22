@@ -6,7 +6,7 @@ import { NextFunction, Request, Response } from "express";
  * @param asyncFunc - Async route handler function returning a Promise.
  * @returns Wrapped function with proper types that catches rejected promises.
  */
-const catchAsyncErrors =
+const catchAsyncError =
   (
     asyncFunc: (
       req: Request,
@@ -18,4 +18,4 @@ const catchAsyncErrors =
     Promise.resolve(asyncFunc(req, res, next)).catch(next);
   };
 
-export default catchAsyncErrors;
+export default catchAsyncError;

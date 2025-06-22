@@ -36,11 +36,11 @@ const bookSchema = new Schema<Book>(
     },
     copies: {
       type: Number,
-      required: [true, "Number of copies is required."],
-      min: [0, "Copies must be at least 0."],
+      required: [true, "Number of book copies is required."],
+      min: [0, "Number of book copies must be at least 0."],
       validate: {
         validator: Number.isInteger,
-        message: "Copies must be an integer.",
+        message: "Number of book copies must be an integer.",
       },
     },
     available: {
