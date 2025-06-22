@@ -1,4 +1,4 @@
-# 📚 Book Borrowing API
+# 📚 Library Management API
 
 A RESTful API built with **Express.js**, **Mongoose**, and **TypeScript** that allows users to manage books and borrow records. Includes validation using **Zod**, error handling middleware, and MongoDB aggregation for analytics.
 
@@ -49,42 +49,25 @@ src/
 
 ### 📦 Prerequisites
 
-- Node.js (>=18.x)
+- Node.js (>=22.25.0)
 - MongoDB (Local or Atlas)
-- npm or yarn
+- npm
 
 ### ⚙️ Environment Setup
 
 Create a `.env` file in the root directory:
 
 ```env
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/book-borrow-api
+PORT=8888
+DB_URL=http://localhost:8888/api/books
 ```
 
 ---
 
-## 🧑‍💻 Getting Started
-
-### 📦 Prerequisites
-
-- Node.js (>=18.x)
-- MongoDB (Local or Atlas)
-- npm or yarn
-
-### ⚙️ Environment Setup
-
-Create a `.env` file in the root directory:
-
-```env
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/book-borrow-api
-```
-
 # Clone the repository
 
-git clone https://github.com/your-username/book-borrow-api.git
-cd book-borrow-api
+git clone https://github.com/itsanamulhassan/express_mongoose_master_assignment
+cd library_management_app
 
 # Install dependencies
 
@@ -98,13 +81,15 @@ npm run dev
 Method Endpoint Description
 POST /api/books Create a new book
 GET /api/books Get all books (filter + sort)
-GET /api/books/:id Get a single book by ID
-PUT /api/books/:id Update book details
-DELETE /api/books/:id Delete a book
+GET /api/books/:bookId Get a single book by ID
+PUT /api/books/:bookId Update book details
+DELETE /api/books/:bookId Delete a book
+
 🔄 Borrowing
 Method Endpoint Description
 POST /api/borrow Borrow a book
-GET /api/borrow/summary Get borrowing summary report
+GET /api/borrow Get borrowing summary report
+
 ✅ Example Request Payload
 
 {
