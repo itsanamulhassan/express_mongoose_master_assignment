@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { ZodType } from "zod";
+import { ZodError, ZodType } from "zod";
+import formatZodError from "./formatZodError";
 
 /**
  * Middleware factory to validate incoming request bodies using a Zod schema.
@@ -21,16 +22,8 @@ const validateRequest =
       next();
     } catch (error) {
       // If validation fails, send a 400 Bad Request response with the error message.
-
-      if (error instanceof Error) {
-        res.status(400).json({
-          error: error.message || "Validation error",
-        });
-      } else {
-        // Fallback error message if the thrown error is not an instance of Error.
-        res.status(400).json({
-          error: "Validation error",
-        });
+      if (error instanceof ZodError) {
+        res.status(400).json(formatZodError(error));
       }
     }
   };

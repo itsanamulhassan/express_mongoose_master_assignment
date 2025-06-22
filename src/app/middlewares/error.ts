@@ -3,20 +3,24 @@ import ErrorHandler from "../utils/errorHandler";
 
 const ErrorMiddleware = (
   error: any,
-  _: Request,
+  _req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction
 ) => {
   error.statusCode = error.statusCode || 500;
   error.message = error.message || "Internal server error";
 
-  // Invalid mong id error
+  // ✅ Handle Mongoose CastError (invalid ObjectId)
   if (error.name === "CastError") {
-    const message: string = `Resource not found. Invalid: ${error.path}`;
+    const message = `Resource not found. Invalid: ${error.path}`;
     error = new ErrorHandler(message, 400);
   }
 
-  res.status(error.statusCode).json({ success: false, message: error.message });
+  // ✅ Fallback response for other errors
+  res.status(error.statusCode).json({
+    success: false,
+    message: error.message,
+  });
 };
 
 export default ErrorMiddleware;
