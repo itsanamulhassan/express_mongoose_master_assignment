@@ -3,7 +3,7 @@ import { Book, genreEnum } from "../schemas/book.schema";
 
 interface BookModelType extends Model<Book> {
   updateBookStatus(
-    bookId: string | Types.ObjectId,
+    bookId: Schema.Types.ObjectId,
     quantity: number
   ): Promise<Book>;
 }
@@ -62,16 +62,17 @@ bookSchema.static(
   "updateBookStatus",
   async function (bookId: Types.ObjectId, quantity: number): Promise<Book> {
     const book = await this.findById(bookId);
-    console.log(book, "book");
     if (!book) {
       throw new Error("Book not found.");
     }
 
-    if (book.copies < quantity || book.copies === 0) {
-      console.log("here 1");
+    if (book.copies < quantity) {
       throw new Error("Not enough copies available.");
     }
     book.copies -= quantity;
+    if (book.copies === 0) {
+      book.available = false;
+    }
 
     await book.save();
     return book;

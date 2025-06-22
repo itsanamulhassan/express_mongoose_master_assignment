@@ -4,7 +4,7 @@ import { BorrowBook } from "../schemas/borrow.schema";
 const borrowSchema = new Schema<BorrowBook>(
   {
     book: {
-      type: String || Types.ObjectId,
+      type: Types.ObjectId,
       required: [true, "Book id is required."],
       ref: "Books",
     },

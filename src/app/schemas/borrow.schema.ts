@@ -1,4 +1,4 @@
-import { Types } from "mongoose";
+import { Schema, Types } from "mongoose";
 import { z } from "zod";
 
 export const borrowBookSchema = z.object({
@@ -22,4 +22,6 @@ export const borrowBookSchema = z.object({
     }),
 });
 
-export type BorrowBook = z.infer<typeof borrowBookSchema>;
+export type BorrowBook = Omit<z.infer<typeof borrowBookSchema>, "book"> & {
+  book: Schema.Types.ObjectId;
+};

@@ -28,7 +28,6 @@ const formatZodError = (error: ZodError) => {
   for (const issue of error.errors) {
     // Convert the field path array to a dot-separated string (e.g., "user.name")
     const field = issue.path.join(".");
-    console.log(issue);
 
     // Structure the error for this field similarly to Mongoose's ValidatorError
     formattedErrors[field] = {

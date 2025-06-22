@@ -1,7 +1,10 @@
 import express from "express";
 import validateRequest from "../middlewares/validateRequest";
 import { borrowBookSchema } from "../schemas/borrow.schema";
-import { createBorrowBook } from "../controllers/borrow.controller";
+import {
+  borrowedSummary,
+  createBorrowBook,
+} from "../controllers/borrow.controller";
 
 const borrowRoute = express.Router();
 
@@ -10,5 +13,5 @@ borrowRoute.post(
   validateRequest(borrowBookSchema),
   createBorrowBook
 );
-borrowRoute.get("/borrow", createBorrowBook);
+borrowRoute.get("/borrow", borrowedSummary);
 export default borrowRoute;

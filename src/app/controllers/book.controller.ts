@@ -135,7 +135,7 @@ export const updateBook = catchAsyncError(
     // 'runValidators: true' runs schema validators on update
     const updatedBook = await Books.findByIdAndUpdate(
       bookId,
-      { $set: req.body },
+      { $set: { ...req.body, available: true } },
       { new: true, runValidators: true }
     );
 
