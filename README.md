@@ -66,17 +66,23 @@ DB_URL=http://localhost:8888/api/books
 
 # Clone the repository
 
-git clone https://github.com/itsanamulhassan/express_mongoose_master_assignment
+git clone https://github.com/itsanamulhassan/express_mongoose_master_assignment  
 cd library_management_app
 
 # Install dependencies
 
+```
 npm install
+```
 
 # Start the server
 
+```
 npm run dev
+```
+
 🧪 API Endpoints
+
 📘 Books
 Method Endpoint Description
 POST /api/books Create a new book
@@ -93,13 +99,13 @@ GET /api/borrow Get borrowing summary report
 ✅ Example Request Payload
 
 {
-"title": "The Theory of Everything",
-"author": "Stephen Hawking",
-"genre": "SCIENCE",
-"isbn": "9780553380163",
-"description": "An overview of cosmology and black holes.",
-"copies": 5,
-"available": true
+"title": "The Theory of Everything",  
+"author": "Stephen Hawking",  
+"genre": "SCIENCE",  
+"isbn": "9780553380163",  
+"description": "An overview of cosmology and black holes.",  
+"copies": 5,  
+"available": true  
 }
 
 🧹 Scripts
