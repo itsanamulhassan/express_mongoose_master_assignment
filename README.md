@@ -30,19 +30,18 @@ A RESTful API built with **Express.js**, **Mongoose**, and **TypeScript** that a
 
 ## 📁 Folder Structure
 
-src/
+src/  
 │
-├── app/
-│ ├── controllers/ # Route handlers (books, borrow)
-│ ├── models/ # Mongoose schemas
-│ ├── routes/ # API route declarations
-│ ├── middlewares/ # Custom middlewares (validation, error handling)
-│ ├── utils/ # Utility functions (error handlers, formatters)
-│ └── app.ts # Main Express app setup
-│
-├── config/ # Database config and environment variables
-├── server.ts # Entry point
-└── types/ # Custom type declarations (optional)
+├── app/  
+│ ├── controllers/ # Route handlers (books, borrow)  
+│ ├── middlewares/ # Custom middlewares (validation, error handling)  
+│ ├── models/ # Mongoose schemas  
+│ ├── routes/ # API route declarations  
+│ ├── schemas/ #Zod schemas for validation  
+│ └── types/ # Custom type declarations  
+│ ├── utils/ # Utility functions (error handlers, formatters)  
+├── server.ts # Entry point  
+└── app.ts # Main Express app setup
 
 ---
 
