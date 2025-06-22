@@ -1,6 +1,7 @@
 import express, { Application, NextFunction, Request, Response } from "express";
 import ErrorMiddleware from "./app/middlewares/error";
 import ErrorHandler from "./app/utils/errorHandler";
+import bookRoute from "./app/routes/book.route";
 
 // Create an instance of the Express application
 const app: Application = express();
@@ -18,6 +19,9 @@ app.get("/test", (_, res: Response) => {
     message: "Library Management server is running",
   });
 });
+
+// All routes
+app.use("/api", bookRoute);
 
 /**
  * Catch-all middleware for handling unknown routes (404 Not Found).
