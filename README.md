@@ -44,8 +44,6 @@ src/
 ├── server.ts # Entry point
 └── types/ # Custom type declarations (optional)
 
----
-
 ## 🧑‍💻 Getting Started
 
 ### 📦 Prerequisites
