@@ -83,17 +83,17 @@ npm run dev
 
 🧪 API Endpoints
 
-📘 Books
-Method Endpoint Description
-POST /api/books Create a new book
-GET /api/books Get all books (filter + sort)
-GET /api/books/:bookId Get a single book by ID
-PUT /api/books/:bookId Update book details
+📘 Books  
+Method Endpoint Description  
+POST /api/books Create a new book  
+GET /api/books Get all books (filter + sort)  
+GET /api/books/:bookId Get a single book by ID  
+PUT /api/books/:bookId Update book details  
 DELETE /api/books/:bookId Delete a book
 
-🔄 Borrowing
-Method Endpoint Description
-POST /api/borrow Borrow a book
+🔄 Borrowing  
+Method Endpoint Description  
+POST /api/borrow Borrow a book  
 GET /api/borrow Get borrowing summary report
 
 ✅ Example Request Payload
