@@ -1,15 +1,23 @@
-require("dotenv").config();
-
+import mongoose from "mongoose";
+import { Server } from "http";
+import config from "./app/config";
 import app from "./app";
-import connectDB from "./app/utils/db";
 
-// Start the server and connect to the database
-app.listen(process.env.PORT, () => {
-  // Log confirmation that server is running
-  console.log(
-    `Library Management is connected to the port ${process.env.PORT}`
-  );
+let server: Server;
+const { port, database_url } = config;
 
-  // Establish connection to MongoDB database
-  connectDB();
-});
+async function main() {
+  try {
+    await mongoose.connect(database_url as string);
+    server = app.listen(port, () => {
+      console.log(`Library Management System is connected the port of ${port}`);
+    });
+  } catch (error) {
+    if (error instanceof Error) {
+      // Log the error message for debugging
+      console.log(`❌ Database connection failed: ${error.message}`);
+    }
+  }
+}
+
+main();

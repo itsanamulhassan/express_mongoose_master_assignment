@@ -14,7 +14,7 @@ app.use(express.json());
  * Test route to verify if the server is running properly
  * Accessible via GET http://localhost:PORT/test
  */
-app.get("/test", (_, res: Response) => {
+app.get("/", (_, res: Response) => {
   res.status(200).json({
     success: true,
     message: "Library Management server is running",
