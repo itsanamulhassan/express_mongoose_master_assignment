@@ -41,6 +41,8 @@ export const createBookSchema = z.object({
     .positive({ message: "Number of book copies must be a positive number." }),
 
   available: z.boolean().default(true),
+  cover: z.string().optional(),
+  favorite: z.boolean().default(false),
 });
 
 export type Book = z.infer<typeof createBookSchema>;

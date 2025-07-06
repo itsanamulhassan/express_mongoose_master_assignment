@@ -4,6 +4,18 @@ A RESTful API built with **Express.js**, **Mongoose**, and **TypeScript** that a
 
 ---
 
+### Backend Live link
+
+```live-link
+https://library-management-system-theta-wheat.vercel.app
+```
+
+### Frontend Live link
+
+```live-link
+https://manageyourtasks-xi.vercel.app/
+```
+
 ## 🚀 Features
 
 - ✅ Add, update, retrieve, and delete books.
@@ -33,13 +45,15 @@ A RESTful API built with **Express.js**, **Mongoose**, and **TypeScript** that a
 src/  
 │
 ├── app/  
-│ ├── controllers/ # Route handlers (books, borrow)  
-│ ├── middlewares/ # Custom middlewares (validation, error handling)  
-│ ├── models/ # Mongoose schemas  
-│ ├── routes/ # API route declarations  
-│ ├── schemas/ #Zod schemas for validation  
-│ └── types/ # Custom type declarations  
-│ ├── utils/ # Utility functions (error handlers, formatters)  
+│ │ ├── config/ # Environment variables handlers  
+│ │ ├── controllers/ # Route handlers (books, borrow)  
+│ │ ├── controllers/ # Route handlers (books, borrow)  
+│ │ ├── middlewares/ # Custom middlewares (validation, error handling)  
+│ │ ├── models/ # Mongoose schemas  
+│ │ ├── routes/ # API route declarations  
+│ │ ├── schemas/ #Zod schemas for validation  
+│ │ ├── types/ # Custom type declarations  
+│ │ └── utils/ # Utility functions (error handlers, formatters)  
 ├── server.ts # Entry point  
 └── app.ts # Main Express app setup
 
@@ -116,18 +130,10 @@ npm start Start compiled app
 📩 Contributing
 
     Fork this repo
-
-    Create your feature branch (git checkout -b feature/myFeature)
-
+    Create your feature branch (git checkout -b feature/my-feature)
     Commit your changes (git commit -am 'Add some feature')
-
-    Push to the branch (git push origin feature/myFeature)
-
+    Push to the branch (git push origin feature/my-feature)
     Open a pull request
-
-📃 License
-
-This project is licensed under the MIT License.
 
 ---
 

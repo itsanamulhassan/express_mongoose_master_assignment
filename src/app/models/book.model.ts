@@ -53,6 +53,14 @@ const bookSchema = new Schema<Book>(
       type: Boolean,
       default: true,
     },
+    favorite: {
+      type: Boolean,
+      default: false,
+    },
+    cover: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true, versionKey: false }
 );

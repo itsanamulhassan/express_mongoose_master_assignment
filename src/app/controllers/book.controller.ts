@@ -4,6 +4,7 @@ import { Book } from "../schemas/book.schema";
 import { Books } from "../models/book.model";
 import ErrorHandler from "../utils/errorHandler";
 import { FilterQuery, Types } from "mongoose";
+import MongooseQueryBuilder from "../utils/mongooseQueryBuilder";
 
 // Create new book
 export const createBook = catchAsyncError(
@@ -33,40 +34,20 @@ export const createBook = catchAsyncError(
   }
 );
 
-interface BookQuery {
-  filter: string;
-  sortBy: string;
-  sort: "desc" | "asc";
-  limit: number | string;
-}
 // Get all the books (filter=FANTASY&sortBy=createdAt&sort=desc&limit=5)
 export const retrieveBooks = catchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
-    // Destructure query params with defaults and type casting
-    const {
-      filter = "",
-      sortBy = "createdAt",
-      sort = "desc",
-      limit = "5",
-    } = req.query as Partial<BookQuery>;
+    console.log(req.query);
+    const books = new MongooseQueryBuilder<typeof Books>(
+      Books.find(),
+      req.query
+    );
 
-    // Build Mongoose query object dynamically
-    const query: FilterQuery<Book> = {};
-
-    if (filter) {
-      // Case-insensitive partial match on genre or title
-      query.$or = [
-        { genre: { $regex: filter, $options: "i" } },
-        { title: { $regex: filter, $options: "i" } },
-      ];
-    }
-
-    const books = (await Books.find(query)
-      .sort({ [sortBy]: sort === "desc" ? -1 : 1 })
-      .limit(+limit)) as Partial<Book[]>; // (+limit) -- Convert string into number
+    // Add query builder methods to the query
+    books.search(["title", "author", "genre"]).paginate().sort();
 
     // If no books are found, forward an error to error handling middleware
-    if (!books.length) {
+    if (!books) {
       return next(new ErrorHandler("Books not found!", 400));
     }
 
