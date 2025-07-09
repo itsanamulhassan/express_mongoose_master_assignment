@@ -37,25 +37,29 @@ export const createBook = catchAsyncError(
 // Get all the books (filter=FANTASY&sortBy=createdAt&sort=desc&limit=5)
 export const retrieveBooks = catchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
-    console.log(req.query);
-    const books = new MongooseQueryBuilder<typeof Books>(
+    const query = new MongooseQueryBuilder<typeof Books>(
       Books.find(),
       req.query
     );
 
     // Add query builder methods to the query
-    books.search(["title", "author", "genre"]).paginate().sort();
+    query.search(["title", "author", "genre"]).paginate().sort();
+
+    const books = await query.queryModel;
 
     // If no books are found, forward an error to error handling middleware
     if (!books) {
       return next(new ErrorHandler("Books not found!", 400));
     }
+    // Count total documents and calculate pagination info
+    const meta = await query.countTotal();
 
     // If books are found, send success response with books data
     res.status(200).json({
       success: true,
       message: "Books retrieved successfully",
       data: books,
+      meta,
     });
   }
 );

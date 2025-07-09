@@ -131,7 +131,7 @@ class MongooseQueryBuilder<T> {
     // Count total matching documents
     const total = await this.queryModel.model.countDocuments(totalQueries);
 
-    const page = Number(this?.query?.page) || 1;
+    const page = Number(this?.query?.page) || 0;
     const size = Number(this?.query?.size) || 10;
     const totalPage = Math.ceil(total / size);
 
